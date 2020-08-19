@@ -85,12 +85,10 @@ export default function SimpleTabs() {
         <ThemeProvider theme={outerTheme}>
             <div className={classes.root}>
                 <AppBar position="static">
-
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                         <img className={classes.logo} src={Logo}></img>
                         <Tab className={classes.mainNav} label="Search Movies" {...a11yProps(1)} />
                         <Tab className={classes.mainNav} label="My Profile" {...a11yProps(2)} />
-
                         <Tab className={classes.endIcon} label="Log in / out" {...a11yProps(0)} />
                     </Tabs>
                 </AppBar>
