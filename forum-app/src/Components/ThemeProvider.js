@@ -20,3 +20,12 @@ export const innerTheme = createMuiTheme({
         },
     },
 });
+
+
+export const logoTheme = createMuiTheme({
+    root: {
+        height: '500px',
+        width: '500px'
+    }
+
+})

@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { outerTheme } from './ThemeProvider.js'
+import { outerTheme, logoTheme } from './ThemeProvider.js'
 import { ThemeProvider } from '@material-ui/core/styles';
 import Logo from '../Assets/CCWhite-Small.png'
 
@@ -50,12 +50,32 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
+
     },
+    logo: {
+        height: '90px',
+        width: '90px',
+        margin: '.8rem'
+
+    },
+    endIcon: {
+        marginLeft: '108rem',
+        fontSize: '1.2rem'
+
+
+    },
+    mainNav: {
+        marginLeft: '5rem',
+        fontSize: '1.2rem'
+    },
+
 }));
 
 export default function SimpleTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+
+    // const classes = logoTheme
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -67,10 +87,11 @@ export default function SimpleTabs() {
                 <AppBar position="static">
 
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                        <img class='Logo' src={Logo}></img>
-                        <Tab label="Log in / out" {...a11yProps(0)} />
-                        <Tab label="Search Movies" {...a11yProps(1)} />
-                        <Tab label="My Profile" {...a11yProps(2)} />
+                        <img className={classes.logo} src={Logo}></img>
+                        <Tab className={classes.mainNav} label="Search Movies" {...a11yProps(1)} />
+                        <Tab className={classes.mainNav} label="My Profile" {...a11yProps(2)} />
+
+                        <Tab className={classes.endIcon} label="Log in / out" {...a11yProps(0)} />
                     </Tabs>
                 </AppBar>
             </div>
