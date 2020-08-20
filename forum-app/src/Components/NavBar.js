@@ -6,9 +6,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { outerTheme, logoTheme } from './ThemeProvider.js'
+import { outerTheme, logoTheme } from './ThemeProvider.js';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Logo from '../Assets/CCWhite-Small.png'
+import Logo from '../Assets/CCWhite-Small.png';
+import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom';
 
 
 
@@ -51,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
 
+
     },
     logo: {
         height: '90px',
@@ -59,15 +62,66 @@ const useStyles = makeStyles((theme) => ({
 
     },
     endIcon: {
-        marginLeft: '108rem',
-        fontSize: '1.2rem'
 
+        fontSize: '1.2rem',
+        width: '10%',
 
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1rem',
+            marginLeft: '.5rem',
+        },
     },
+
     mainNav: {
-        marginLeft: '5rem',
-        fontSize: '1.2rem'
+        marginLeft: '5%',
+        fontSize: '1.2rem',
+
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1rem',
+        },
+
+        // [theme.breakpoints.down('md')]: {
+        //     marginLeft: '1%',
+        // },
     },
+
+    flexLayout: {
+        display: 'flex',
+
+
+    },
+    tabs: {
+        width: "100%",
+        display: 'flex',
+
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
+
+
+
+    },
+    navContainer: {
+        width: '100%',
+    },
+    rightNav: {
+        width: '80%',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginLeft: '5%',
+
+        [theme.breakpoints.down('md')]: {
+            marginLeft: '1%',
+        },
+
+    },
+
+
+
+
+
+
 
 }));
 
@@ -83,17 +137,20 @@ export default function SimpleTabs() {
 
     return (
         <ThemeProvider theme={outerTheme}>
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                        <img className={classes.logo} src={Logo}></img>
-                        <Tab className={classes.mainNav} label="Search Movies" {...a11yProps(1)} />
-                        <Tab className={classes.mainNav} label="My Profile" {...a11yProps(2)} />
-                        <Tab className={classes.endIcon} label="Log in / out" {...a11yProps(0)} />
+            <AppBar position="static">
+                <Container className={classes.navContainer} maxWidth={'100vw'}>
+                    <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example">
+                        <Link style={{ all: 'inherit' }} to={'/'}><img className={classes.logo} src={Logo} alt={'Couch critic logo'}></img></Link>
+                        <Link style={{ all: 'inherit', marginLeft: '5%' }} to={'/popular'}><Tab className={classes.mainNav} label="Popular Flicks" {...a11yProps(1)} /></Link>
+                        <Link style={{ all: 'inherit', marginLeft: '5%' }} to={'/search'}><Tab className={classes.mainNav} label="Search Movies" {...a11yProps(1)} /></Link>
+                        <Link style={{ all: 'inherit', marginLeft: '5%' }} to={'/profile'}><Tab className={classes.mainNav} label="My Profile" {...a11yProps(2)} /></Link>
+                        <div className={classes.rightNav}>
+                            <Link style={{ all: 'inherit', marginLeft: '5%' }} to={'/login'}><Tab className={classes.endIcon} label="Log in / out" {...a11yProps(0)} /></Link>
+                        </div>
                     </Tabs>
-                </AppBar>
-            </div>
-        </ThemeProvider>
+                </Container>
+            </AppBar >
+        </ThemeProvider >
 
     );
 }
