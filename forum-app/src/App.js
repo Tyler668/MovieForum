@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './Components/NavBar.js';
 import MoviePage from './Components/MoviePage.js'
 import Login from './Components/Login.js'
+import Signup from './Components/Signup.js'
+
 import { Route } from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path='/movie/:id' component={MoviePage}></Route>
 
       <Route path='/login' component={Login}></Route>
+      <Route path='/signup' component={Signup}></Route>
 
     </div>
   );
